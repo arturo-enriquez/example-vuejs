@@ -1,8 +1,8 @@
 const app = new Vue({
     el: '#app',
     data: {
-        title: 'hello ',
-        fruts: [
+        title: 'List of Fruits',
+        fruits: [
             {
                 name: 'Manzana',
                 stock: 10
@@ -16,15 +16,26 @@ const app = new Vue({
                 stock: 1
             }
         ],
-        newFrut: ''
+        newFruit: '',
+        total: 0
     },
     methods: {
-        addFrut () {
-            if(this.newFrut != '')
-            this.fruts.push({
-                stock: this.newFrutStock
+        addFruit () {
+            if(this.newFruit != '') 
+            this.fruits.push({
+                name: this.newFruit,
+                stock: 0
             });
-            this.newFrut = '';
+            this.newFruit = '';
+        }
+    },
+    computed: {
+        totalFruits() {
+            this.total = 0;
+            for(fruit of this.fruits) {
+                this.total += fruit.stock;
+            }
+            return this.total;
         }
     }
 });

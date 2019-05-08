@@ -10,17 +10,20 @@
     
     <div id="app">
         <h1>{{title}}</h1>
-        <input type="text" v-model="newFrut" @keyup.enter="addFrut">
-        <button @click="addFrut">Agregar</button>
+        <!-- @keyup.enter == v-on:keyup.enter -->
+        <input type="text" v-model="newFruit" @keyup.enter="addFruit">
+        <!-- @click == v-on:click -->
+        <button @click="addFruit">Add</button>
         <ul>
-            <li v-for="frut of fruts">
-                <input type="number" v-model="frut.stock" style="width: 30px">
-                {{frut.name}} - {{frut.stock}}
-                <span v-if="frut.stock === 0"> - Sin stock</span>
+            <li v-for="fruit of fruits">
+                <input type="number" v-model.number="fruit.stock" style="width: 30px">
+                {{fruit.name}}
+                <button @click="fruit.stock++">+</button>
+                <span v-if="fruit.stock === 0"> - Sin stock</span>
             </li>
         </ul>
+        <h4>TOTAL: {{totalFruits}}</h4>
     </div>
-
 
     <!-- development version, includes helpful console warnings -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
