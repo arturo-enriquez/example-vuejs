@@ -1,1 +1,1 @@
-## Simple Example of VueJS with CDN
+# Simple Example of VueJS with CDN
